@@ -126,6 +126,11 @@ public struct Entry: Equatable {
         let encoding = self.centralDirectoryStructure.usesUTF8PathEncoding ? .utf8 : codepage437
         return self.path(using: encoding)
     }
+    
+    public var pathData: Data {
+        self.centralDirectoryStructure.fileNameData
+    }
+    
     /// The file attributes of the receiver as key/value pairs.
     ///
     /// Contains the modification date and file permissions.
